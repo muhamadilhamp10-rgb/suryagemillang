@@ -1,0 +1,924 @@
+  <!DOCTYPE html>
+  <html lang="id">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suryagemillang</title>
+  
+  <style>
+ html{
+scroll-behavior:smooth;
+}
+  :root{
+  --black:#111111;
+  --gold:#C8A951;
+  --white:#F5F5F5;
+  }
+  
+  *{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+  }
+  
+  body{
+  background:var(--white);
+  color:var(--black);
+  overflow-x:hidden;
+  }
+  
+  /* HEADER */
+  header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  background:white;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  z-index:1000;
+  }
+  
+  .logo{
+  font-weight:bold;
+  font-size:20px;
+  }
+  
+  .menu-btn{
+  font-size:26px;
+  cursor:pointer;
+  }
+  
+  /* SIDEBAR */
+  .sidebar{
+  position:fixed;
+  left:-260px;
+  top:0;
+  width:250px;
+  height:100%;
+  background:var(--black);
+  color:white;
+  padding-top:70px;
+  transition:0.4s cubic-bezier(.77,0,.18,1);
+  z-index:999;
+  }
+  
+  .sidebar a{
+  display:block;
+  padding:15px 20px;
+  color:white;
+  text-decoration:none;
+  transition:0.3s;
+  }
+  
+  .sidebar a:hover{
+  background:var(--gold);
+  color:black;
+  }
+  
+  .sidebar.active{
+  left:0;
+  }
+  
+  /* SECTION */
+  section{
+  min-height:100vh;
+  padding:120px 20px 60px;
+  display:none;
+  animation:fadeIn .6s ease;
+  }
+  
+  section.active{
+  display:block;
+  }
+  
+  @keyframes fadeIn{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+  }
+  
+  /* HERO */
+  /* HERO */
+  .hero{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  min-height:350px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  }
+  
+  .hero-bg{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+  }
+  
+  .hero-content{
+  position:relative;
+  z-index:2;
+  padding:60px 20px;
+  }
+  
+  .hero h1{
+  font-size:34px;
+  margin-bottom:10px;
+  }
+  
+  .hero-bg{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+  }
+  
+  .hero::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.55);
+  z-index:1;
+  }
+  
+  .hero-content{
+  position:relative;
+  z-index:2;
+  padding:60px 20px;
+  }
+  
+  .hero h1,
+  .hero p,
+  .hero .btn{
+  position:relative;
+  z-index:1;
+  }
+  
+  .hero h1{
+  font-size:34px;
+  margin-bottom:10px;
+  }
+  
+  .btn{
+background: linear-gradient(45deg,#c9a227,#f5d76e);
+color:black;
+padding:12px 28px;
+border-radius:50px;
+cursor:pointer;
+font-weight:bold;
+transition:all 0.3s ease;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+  
+  .btn:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 25px rgba(0,0,0,.2);
+  }
+  
+  /* CARDS */
+  .cards{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  margin-top:40px;
+  }
+  
+  .card{
+  background:white;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+  transition:.4s;
+  }
+  
+  .card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 25px 40px rgba(0,0,0,0.15);
+  }
+  
+  /* PRODUCT */
+  .product-img{
+  width:100%;
+  border-radius:18px;
+  margin-bottom:15px;
+  }
+  
+  .color-options{
+  display:flex;
+  gap:8px;
+  margin:10px 0;
+  flex-wrap:wrap;
+  }
+  
+  .color{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  cursor:pointer;
+  border:2px solid #ddd;
+  }
+  
+  .size-options{
+  margin-top:8px;
+  font-size:14px;
+  }
+  
+  /* FLOAT WA */
+  .wa-btn{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#25D366;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  cursor:pointer;
+  animation:float 2s infinite;
+  z-index:1000;
+  }
+  
+  @keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+  }
+  
+  /* AI */
+  .ai-btn{
+  position:fixed;
+  right:20px;
+  bottom:95px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  z-index:1000;
+  }
+  
+  .ai-btn img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  }
+  
+  .chat-box{
+  position:fixed;
+  right:90px;
+  bottom:120px;
+  width:330px;
+  height:430px;
+  background:white;
+  border-radius:20px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.25);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  z-index:1000;
+  }
+  
+  .chat-header{
+  background:var(--black);
+  color:white;
+  padding:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  }
+  
+  .chat-header span{
+  cursor:pointer;
+  font-weight:bold;
+  }
+  
+  .chat-content{
+  flex:1;
+  padding:12px;
+  overflow-y:auto;
+  font-size:14px;
+  }
+  
+  .chat-input{
+  display:flex;
+  border-top:1px solid #ddd;
+  }
+  
+  .chat-input input{
+  flex:1;
+  padding:10px;
+  border:none;
+  outline:none;
+  }
+  
+  .chat-input button{
+  background:var(--gold);
+  border:none;
+  padding:10px 15px;
+  cursor:pointer;
+  }
+  
+  /* FOOTER */
+  footer{
+  background:var(--black);
+  color:white;
+  padding:50px 20px 20px;
+  }
+  
+  .footer-grid{
+  display:grid;
+  gap:20px;
+  margin-bottom:30px;
+  }
+  
+  .footer-title{
+  color:var(--gold);
+  font-weight:bold;
+  margin-bottom:10px;
+  }
+  
+  .copyright{
+  text-align:center;
+  font-size:14px;
+  opacity:.7;
+  border-top:1px solid rgba(255,255,255,.2);
+  padding-top:15px;
+  }
+  .color.active{
+  border:2px solid var(--gold);
+  transform:scale(1.2);
+  }
+
+  
+  /* SIZE BUTTON */
+  .size-btn{
+  display:inline-block;
+  padding:6px 12px;
+  margin:5px 5px 0 0;
+  border:1px solid #ccc;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+  transition:.2s;
+  }
+  
+  .size-btn.active{
+  background:var(--gold);
+  color:black;
+  border:1px solid var(--gold);
+  transform:scale(1.1);
+  }
+  
+  /* PETUNJUK */
+  .note{
+  font-size:12px;
+  opacity:.6;
+  margin-top:8px;
+  }
+  .hero {
+position: relative;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: white;
+overflow: hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0.5)
+  );
+  z-index:1;
+}
+
+.hero-bg{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:0;
+filter:brightness(0.9);
+}
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+padding:15px 0;
+z-index:1000;
+}
+.product-card{
+transition:all 0.3s ease;
+}
+
+.product-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+.chat-header img{
+width:30px;
+height:30px;
+border-radius:50%;
+margin-right:8px;
+object-fit:cover;
+}
+.chat-header img{
+width:30px;
+height:30px;
+border-radius:50%;
+margin-right:8px;
+object-fit:cover;
+}
+.chat-box{
+opacity:0;
+transform:translateY(20px);
+transition:all .3s ease;
+}
+
+.chat-box.active{
+opacity:1;
+transform:translateY(0);
+display:flex;
+}
+  </style>
+  </head>
+  <body>
+  
+  <header>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <div class="logo">Suryagemillang</div>
+  </header>
+  
+  <div class="sidebar" id="sidebar">
+<a onclick="showPage('home')">Home</a>
+<a onclick="showPage('produk')">Produk</a>
+<a onclick="showPage('galeri')">Galeri</a>
+<a onclick="showPage('contact')">Contact</a>
+</div>
+  
+  <!-- HOME -->
+  <section id="home" class="active">
+  <div class="hero">
+  
+  <img src="logotoko.jpg" class="hero-bg">
+  
+  <div class="hero-content">
+  <h1>Busana Tactical Premium</h1>
+  <p>Elegan • Tangguh • Profesional</p>
+  <div class="btn" onclick="showPage('produk')">Lihat Produk</div>
+  </div>
+  
+  </div>
+  
+  <div class="cards">
+  <div class="card">⭐ Rating 5.0</div>
+  <div class="card">📅 Melayani Sejak 2024 • Produk Terjamin</div>
+  <div class="card">🚚 Kirim Seluruh Indonesia</div>
+  <div class="card">🔥 Produk 100% Original dari Supplier Terpercaya</div>
+  </div>
+  </section>
+  
+  <!-- PRODUK -->
+<section id="produk">
+<h1>Produk Kami</h1>
+
+<!-- 1 -->
+<h2>Kemeja Tactical Lengan Panjang</h2>
+<div class="card">
+<img class="product-img" src="taclenganpanjang/tacpabu.jpg">
+<p>Harga: Rp285.000</p>
+
+<div class="color-options">
+<div class="color" style="background:#87CEFA" data-color="Biru Muda"></div>
+<div class="color" style="background:white" data-color="Putih"></div>
+<div class="color" style="background:maroon" data-color="Maroon"></div>
+<div class="color" style="background:black" data-color="Hitam"></div>
+<div class="color" style="background:#0047AB" data-color="Biru Benhur"></div>
+<div class="color" style="background:navy" data-color="Navy"></div>
+<div class="color" style="background:darkgreen" data-color="Army"></div>
+<div class="color" style="background:gray" data-color="Abu-Abu"></div>
+<div class="color" style="background:#556B2F" data-color="Olive"></div>
+</div>
+<div class="size-options">
+<span class="size-btn" data-size="L">L</span>
+<span class="size-btn" data-size="XL">XL</span>
+<span class="size-btn" data-size="XXL">XXL</span>
+<span class="size-btn" data-size="XXXL">XXXL</span>
+</div>
+
+<div class="note">
+Pilih warna & ukuran lalu tekan tombol pesan 👇
+</div>
+<div class="btn" onclick="checkoutAdvanced(this,'Kemeja Tactical Lengan Panjang',285000)">
+Pesan via WhatsApp
+</div>
+</div>
+
+<!-- 2 -->
+<h2>Kemeja Tactical Lengan Pendek</h2>
+<div class="card">
+<img class="product-img" src="taclenganpendek/tachitam.jpg">
+<p>Harga: Rp275.000</p>
+
+<div class="color-options">
+<div class="color" style="background:#87CEFA" data-color="Biru Muda"></div>
+<div class="color" style="background:white" data-color="Putih"></div>
+<div class="color" style="background:maroon" data-color="Maroon"></div>
+<div class="color" style="background:black" data-color="Hitam"></div>
+<div class="color" style="background:#0047AB" data-color="Biru Benhur"></div>
+<div class="color" style="background:navy" data-color="Navy"></div>
+<div class="color" style="background:darkgreen" data-color="Army"></div>
+<div class="color" style="background:gray" data-color="Abu-Abu"></div>
+<div class="color" style="background:#556B2F" data-color="Olive"></div>
+</div>
+<div class="size-options">
+<span class="size-btn" data-size="L">L</span>
+<span class="size-btn" data-size="XL">XL</span>
+<span class="size-btn" data-size="XXL">XXL</span>
+<span class="size-btn" data-size="XXXL">XXXL</span>
+</div>
+
+<div class="note">
+Pilih warna & ukuran lalu tekan tombol pesan 👇
+</div>
+<div class="btn" onclick="checkoutAdvanced(this,'Kemeja Tactical Lengan Pendek',275000)">
+Pesan via WhatsApp
+</div>
+</div>
+
+<!-- 3 -->
+<h2>Kemeja Tactical W TAC</h2>
+<div class="card">
+<img class="product-img" src="wtac/wtacarmy.jpg">
+<p>Harga: Rp295.000</p>
+
+<div class="color-options">
+<div class="color" style="background:black" data-color="Hitam"></div>
+<div class="color" style="background:#F5F5DC" data-color="Krem"></div>
+<div class="color" style="background:darkgreen" data-color="Army"></div>
+<div class="color" style="background:navy" data-color="Navy"></div>
+<div class="color" style="background:gray" data-color="Abu-Abu"></div>
+</div>
+<div class="size-options">
+<span class="size-btn" data-size="L">L</span>
+<span class="size-btn" data-size="XL">XL</span>
+<span class="size-btn" data-size="XXL">XXL</span>
+<span class="size-btn" data-size="XXXL">XXXL</span>
+</div>
+
+<div class="note">
+Pilih warna & ukuran lalu tekan tombol pesan 👇
+</div>
+<div class="btn" onclick="checkoutAdvanced(this,'Kemeja Tactical W TAC',295000)">
+Pesan via WhatsApp
+</div>
+</div>
+
+<!-- 4 -->
+<h2>Kemeja 511</h2>
+<div class="card">
+<img class="product-img"src="kemeja511/kemeja511abu.jpg">
+<p>Harga: Rp310.000</p>
+
+<div class="color-options">
+<div class="color" style="background:gray" data-color="Abu-Abu"></div>
+<div class="color" style="background:black" data-color="Hitam"></div>
+<div class="color" style="background:darkgreen" data-color="Army"></div>
+<div class="color" style="background:#F5F5DC" data-color="Krem"></div>
+</div>
+<div class="size-options">
+<span class="size-btn" data-size="L">L</span>
+<span class="size-btn" data-size="XL">XL</span>
+<span class="size-btn" data-size="XXL">XXL</span>
+<span class="size-btn" data-size="XXXL">XXXL</span>
+</div>
+
+<div class="note">
+Pilih warna & ukuran lalu tekan tombol pesan 👇
+</div>
+<div class="btn" onclick="checkoutAdvanced(this,'Kemeja 511',310000)">
+Pesan via WhatsApp
+</div>
+</div>
+
+<!-- 5 -->
+<h2>Celana Blackhawk</h2>
+<div class="card">
+<img class="product-img" src="celanablkhwk/maskotblachawk.jpg">
+<p>Harga: Rp350.000</p>
+
+<div class="color-options">
+<div class="color" style="background:black" data-color="Hitam"></div>
+<div class="color" style="background:#F5F5DC" data-color="Crem"></div>
+<div class="color" style="background:darkgreen" data-color="Army Green"></div>
+<div class="color" style="background:gray" data-color="Grey"></div>
+</div>
+<div class="size-options">
+<span class="size-btn" data-size="L">L</span>
+<span class="size-btn" data-size="XL">XL</span>
+<span class="size-btn" data-size="XXL">XXL</span>
+<span class="size-btn" data-size="XXXL">XXXL</span>
+</div>
+
+<div class="note">
+Pilih warna & ukuran lalu tekan tombol pesan 👇
+</div>
+<div class="btn" onclick="checkoutAdvanced(this,'Celana Blackhawk',350000)">
+Pesan via WhatsApp
+</div>
+</div>
+
+</section>
+  
+  <section id="galeri">
+<h1>Galeri Produk</h1>
+
+<style>
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+gap:15px;
+margin-top:30px;
+}
+.gallery-grid img{
+width:100%;
+border-radius:15px;
+transition:.3s;
+}
+.gallery-grid img:hover{
+transform:scale(1.05);
+}
+</style>
+
+<!-- Total 34 Foto -->
+
+<h2>Kemeja Tactical Lengan Panjang</h2>
+<div class="gallery-grid">
+<img src="taclenganpanjang/tacpbiru.jpg">
+<img src="taclenganpanjang/tacpputih.jpg">
+<img src="taclenganpanjang/tacpmaroon.jpg">
+<img src="taclenganpanjang/tacphitam.jpg">
+<img src="taclenganpanjang/tacpnavy.jpg">
+<img src="taclenganpanjang/tacpnavg.jpg">
+<img src="taclenganpanjang/tacpabu.jpg">
+<img src="taclenganpanjang/tacpbenhur.jpg">
+<img src="taclenganpanjang/tacpkrem.jpg">
+</div>
+
+<h2>Kemeja Tactical Lengan Pendek</h2>
+<div class="gallery-grid">
+<img src="taclenganpendek/tachitam.jpg">
+<img src="taclenganpendek/tackrem.jpg">
+<img src="taclenganpendek/tacarmy.jpg">
+<img src="taclenganpendek/tacabu.jpg">
+<img src="taclenganpendek/tacbiru.jpg">
+<img src="taclenganpendek/tacmaroon.jpg">
+<img src="taclenganpendek/tacputih.jpg">
+<img src="taclenganpendek/tacbenhur.jpg">
+<img src="taclenganpendek/tacnavy.jpg">
+</div>
+
+<h2>Kemeja Tactical W TAC</h2>
+<div class="gallery-grid">
+<img src="wtac/wtacarmy.jpg">
+<img src="wtac/wtacabu.jpg">
+<img src="wtac/wtachitam.jpg">
+<img src="wtac/wtacnavy.jpg">
+<img src="wtac/wtackrem.jpg">
+</div>
+
+<h2>Kemeja 511</h2>
+<div class="gallery-grid">
+<img src="kemeja511/kemeja511abu.jpg">
+<img src="kemeja511/kemeja511krem.jpg">
+<img src="kemeja511/kemeja511black.jpg">
+<img src="kemeja511/kemeja511navy.jpg">
+</div>
+
+<h2>Celana Blackhawk</h2>
+<div class="gallery-grid">
+<img src="celanablkhwk/celanahitam.jpg">
+<img src="celanablkhwk/maskotblachawk.jpg">
+<img src="celanablkhwk/celanagreenarmy.jpg">
+<img src="celanablkhwk/celanagreenarmy1.jpg">
+<img src="celanablkhwk/celanakremmaskot.jpg">
+<img src="celanablkhwk/celananavy.jpg">
+<img src="celanablkhwk/celanakrem.jpg">
+</div>
+
+</section>
+  <!-- CONTACT -->
+  <section id="contact">
+  <h1>Contact</h1>
+  
+  <div class="cards">
+  <div class="card">
+  <b>Alamat</b><br>
+  Perum Grand Cikarang Village No.03 Blok N5, Jayasampurna, Kec. Serang Baru, Kabupaten Bekasi, Jawa Barat 17330
+  </div>
+  
+  <div class="card">
+  <b>WhatsApp</b><br>
+  0878-8120-2324
+  </div>
+  
+  <div class="card">
+  <b>Email</b><br>
+  cecepnurahmat01@gmail.com
+  </div>
+  </div>
+  
+  <br><br>
+  
+  <h2>Kirim Pesan</h2>
+  <form action="mailto:cecepnurahmat01@gmail.com" method="post" enctype="text/plain">
+  <input type="text" name="nama" placeholder="Nama Anda" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:10px;border:1px solid #ccc;">
+  <input type="email" name="email" placeholder="Email Anda" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:10px;border:1px solid #ccc;">
+  <textarea name="pesan" placeholder="Tulis pesan..." required style="width:100%;padding:12px;height:120px;border-radius:10px;border:1px solid #ccc;"></textarea>
+  <button class="btn">KIRIM</button>
+  </form>
+  </section>
+  
+  <footer>
+  <div class="footer-grid">
+  
+  <div>
+  <div class="footer-title">Contact Info</div>
+  WhatsApp: 0878-8120-2324<br>
+  Email: cecepnurahmat01@gmail.com
+  </div>
+  
+  <div>
+  <div class="footer-title">Quick Links</div>
+  Home<br>
+  Produk<br>
+  galeri<br>
+  Contact
+  </div>
+  
+  <div>
+  <div class="footer-title">Pengiriman</div>
+  JNE, J&T, POS Indonesia
+  </div>
+  
+  </div>
+  
+  <div class="copyright">
+  © 2026 Suryagemillang. All Rights Reserved.
+  </div>
+  </footer>
+  
+  <!-- FLOAT BUTTON -->
+  <div class="wa-btn" onclick="window.open('https://wa.me/6287881202324')">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="30">
+  <path d="M16 .396C7.164.396 0 7.56 0 16.396c0 2.89.755 5.71 2.188 8.19L.122 32l7.63-1.99a15.89 15.89 0 0 0 8.248 2.31c8.836 0 16-7.164 16-16S24.836.396 16 .396zm0 29.29a13.19 13.19 0 0 1-6.7-1.82l-.48-.28-4.53 1.18 1.21-4.42-.31-.45A13.16 13.16 0 0 1 2.8 16.396c0-7.3 5.9-13.2 13.2-13.2s13.2 5.9 13.2 13.2-5.9 13.29-13.2 13.29zm7.24-9.86c-.4-.2-2.36-1.16-2.72-1.3-.36-.13-.62-.2-.88.2s-1.02 1.3-1.26 1.57c-.23.27-.47.3-.87.1-.4-.2-1.7-.63-3.23-2.02-1.2-1.07-2-2.4-2.23-2.8-.23-.4-.02-.62.18-.82.18-.18.4-.47.6-.7.2-.23.27-.4.4-.67.13-.27.07-.5-.03-.7-.1-.2-.88-2.13-1.2-2.9-.3-.75-.62-.65-.88-.66-.23-.01-.5-.01-.77-.01s-.7.1-1.07.5c-.37.4-1.4 1.36-1.4 3.3 0 1.94 1.43 3.82 1.63 4.1.2.27 2.8 4.3 6.8 6.03.95.4 1.7.64 2.28.82.96.3 1.83.26 2.52.16.77-.12 2.36-.96 2.7-1.9.33-.93.33-1.72.23-1.9-.1-.18-.37-.27-.77-.47z"/>
+  </svg>
+  </div>
+  
+  <div class="ai-btn" onclick="toggleChat()">
+    <img src="viona.jpg">
+  </div>
+  
+  <div class="chat-box" id="chatBox">
+  <div class="chat-header">
+<div style="display:flex;align-items:center;gap:8px;">
+<img src="viona.jpg">
+<span>Viona - Asisten</span>
+</div>
+<span onclick="toggleChat()">×</span>
+</div>
+  <div class="chat-content" id="chatContent">
+  Halo 👋 Saya Viona. Tanyakan harga atau tulis tinggi & berat untuk rekomendasi size.
+  </div>
+  <div class="chat-input">
+  <input type="text" id="chatInput">
+  <button onclick="sendMessage()">Kirim</button>
+  </div>
+  </div>
+  
+  <script>
+  function toggleMenu(){
+  document.getElementById("sidebar").classList.toggle("active");
+  }
+  
+  function showPage(id){
+  document.querySelectorAll("section").forEach(sec=>sec.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.getElementById("sidebar").classList.remove("active");
+  }
+  
+  function toggleChat(){
+let box = document.getElementById("chatBox");
+box.classList.toggle("active");
+}
+  
+  
+  function sendMessage(){
+  let input=document.getElementById("chatInput");
+  let content=document.getElementById("chatContent");
+  let text=input.value.toLowerCase();
+  if(text.trim()==="") return;
+  
+  content.innerHTML+="<br><b>Anda:</b> "+input.value;
+  let reply="Terima kasih 😊";
+  
+  if(text.includes("harga")){
+  reply="Blackhawk 350rb, Tactical 275rb, W TAC 290rb.";
+  }
+  
+  let angka=text.match(/\d+/g);
+  if(angka && angka.length>=1){
+  let berat=parseInt(angka[angka.length-1]);
+  if(berat<=55) reply="Rekomendasi Size 28 / L";
+  else if(berat<=65) reply="Rekomendasi Size 30 / XL";
+  else if(berat<=75) reply="Rekomendasi Size 32 / XXL";
+  else if(berat<=85) reply="Rekomendasi Size 34 / XXXL";
+  else reply="Rekomendasi Size 36 / XXXXL";
+  }
+  
+  content.innerHTML+="<br><b>Viona:</b> "+reply;
+  input.value="";
+  content.scrollTop=content.scrollHeight;
+  }
+  
+  function checkoutAdvanced(btn,nama,harga){
+
+let parent = btn.closest(".card");
+
+// ambil warna
+let warnaEl = parent.querySelector(".color.active");
+let warna = warnaEl ? warnaEl.dataset.color : null;
+
+// ambil size
+let sizeEl = parent.querySelector(".size-btn.active");
+let size = sizeEl ? sizeEl.dataset.size : null;
+
+if(!warna || !size){
+alert("Silakan pilih warna dan ukuran terlebih dahulu.");
+return;
+}
+
+let pesan = encodeURIComponent(
+"Halo, saya ingin membeli:\n\n" +
+"Produk: " + nama + "\n" +
+"Harga: Rp" + harga + "\n" +
+"Warna: " + warna + "\n" +
+"Ukuran: " + size
+);
+
+window.open("https://wa.me/6287881202324?text="+pesan);
+}
+  document.querySelectorAll('.color').forEach(color=>{
+    color.addEventListener('click', function(){
+      this.parentElement.querySelectorAll('.color').forEach(c=>c.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.size-btn').forEach(size=>{
+size.addEventListener('click', function(){
+this.parentElement.querySelectorAll('.size-btn')
+.forEach(s=>s.classList.remove('active'));
+this.classList.add('active');
+});
+});
+  </script>
+  
+  </body>
+  </html>
