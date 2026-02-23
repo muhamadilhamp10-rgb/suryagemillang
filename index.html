@@ -998,6 +998,15 @@ this.parentElement.querySelectorAll('.size-btn')
 this.classList.add('active');
 });
 });
+setTimeout(()=>{
+let p1=document.getElementById("homePointer");
+let p2=document.getElementById("produkPointer");
+let p3=document.getElementById("galeriPointer");
+
+if(p1) p1.style.display="none";
+if(p2) p2.style.display="none";
+if(p3) p3.style.display="none";
+},3000);
   </script>
   
   </body>
