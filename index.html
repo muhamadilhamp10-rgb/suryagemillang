@@ -477,6 +477,39 @@ opacity:1;
 transform:translateY(0);
 display:flex;
 }
+.social-section{
+text-align:center;
+margin-top:40px;
+}
+
+.social-icons{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-top:15px;
+}
+
+.social-icons img{
+width:60px;
+cursor:pointer;
+transition:.3s;
+}
+
+.social-icons img:hover{
+transform:scale(1.1);
+}
+
+.pointer{
+margin-top:10px;
+font-size:14px;
+color:var(--gold);
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%,100%{opacity:1;}
+50%{opacity:0.3;}
+}
   </style>
   </head>
   <body>
