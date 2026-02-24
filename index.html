@@ -516,6 +516,13 @@ cursor:pointer;
 transition:.3s;
 filter:drop-shadow(0 0 5px rgba(0,0,0,0.2));
 }
+.color-name{
+font-size:12px;
+margin-top:6px;
+color:var(--gold);
+font-weight:500;
+min-height:16px;
+}
   </style>
   </head>
   <body>
@@ -590,8 +597,9 @@ filter:drop-shadow(0 0 5px rgba(0,0,0,0.2));
 <div class="color" style="background:navy" data-color="Navy"></div>
 <div class="color" style="background:darkgreen" data-color="Army"></div>
 <div class="color" style="background:gray" data-color="Abu-Abu"></div>
-<div class="color" style="background:#556B2F" data-color="Olive"></div>
+<div class="color" style="background:#F5F5DC" data-color="krem"></div>
 </div>
+<div class="color-name"></div>
 <div class="size-options">
 <span class="size-btn" data-size="L">L</span>
 <span class="size-btn" data-size="XL">XL</span>
@@ -622,8 +630,9 @@ Pesan via WhatsApp
 <div class="color" style="background:navy" data-color="Navy"></div>
 <div class="color" style="background:darkgreen" data-color="Army"></div>
 <div class="color" style="background:gray" data-color="Abu-Abu"></div>
-<div class="color" style="background:#556B2F" data-color="Olive"></div>
+<div class="color" style="background:#F5F5DC" data-color="krem"></div>
 </div>
+<div class="color-name"></div>
 <div class="size-options">
 <span class="size-btn" data-size="L">L</span>
 <span class="size-btn" data-size="XL">XL</span>
@@ -652,6 +661,7 @@ Pesan via WhatsApp
 <div class="color" style="background:navy" data-color="Navy"></div>
 <div class="color" style="background:gray" data-color="Abu-Abu"></div>
 </div>
+<div class="color-name"></div>
 <div class="size-options">
 <span class="size-btn" data-size="L">L</span>
 <span class="size-btn" data-size="XL">XL</span>
@@ -679,6 +689,7 @@ Pesan via WhatsApp
 <div class="color" style="background:darkgreen" data-color="Army"></div>
 <div class="color" style="background:#F5F5DC" data-color="Krem"></div>
 </div>
+<div class="color-name"></div>
 <div class="size-options">
 <span class="size-btn" data-size="L">L</span>
 <span class="size-btn" data-size="XL">XL</span>
@@ -706,6 +717,7 @@ Pesan via WhatsApp
 <div class="color" style="background:darkgreen" data-color="Army Green"></div>
 <div class="color" style="background:gray" data-color="Grey"></div>
 </div>
+<div class="color-name"></div>
 <div class="size-options">
 <span class="size-btn" data-size="L">L</span>
 <span class="size-btn" data-size="XL">XL</span>
@@ -994,11 +1006,23 @@ let pesan = encodeURIComponent(
 window.open("https://wa.me/6287881202324?text="+pesan);
 }
   document.querySelectorAll('.color').forEach(color=>{
-    color.addEventListener('click', function(){
-      this.parentElement.querySelectorAll('.color').forEach(c=>c.classList.remove('active'));
-      this.classList.add('active');
-    });
+  color.addEventListener('click', function(){
+
+    let parent = this.closest('.card');
+
+    // hapus active sebelumnya
+    parent.querySelectorAll('.color').forEach(c=>c.classList.remove('active'));
+
+    // aktifkan yang dipilih
+    this.classList.add('active');
+
+    // tampilkan nama warna
+    let warnaText = this.dataset.color;
+    let display = parent.querySelector('.color-name');
+    display.innerText = "Warna dipilih: " + warnaText;
+
   });
+});
   document.querySelectorAll('.size-btn').forEach(size=>{
 size.addEventListener('click', function(){
 this.parentElement.querySelectorAll('.size-btn')
